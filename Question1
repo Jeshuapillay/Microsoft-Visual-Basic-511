@@ -1,0 +1,60 @@
+' Create a Visual Basic Windows Form that calculates total surface area of a wall.
+' Your form must have 4 dropdown boxes (length, width, height, roll coverage and single roll) that has a range of 0 to 35.
+' You must include 1 textbox (single roll).
+' Include 5 labels called: Length, width, height, roll coverage and single roll.
+
+Public Class Form1
+
+ Dim dblGoku As Integer = 0
+ Dim dblInteger As Integer = 0
+ Dim dblHeight As Integer = 0
+ Dim dblWidth As Integer = 0
+ Dim dblCoverage As Integer = 0
+ 
+Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+ Me.Close()
+ 
+ End Sub
+
+Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+ For dblGoku As Integer = 10 To 35
+ With ComboBox1.Items
+ .Add(dblGoku)
+ End With
+ With ComboBox2.Items
+ .Add(dblGoku)
+ End With
+ With ComboBox3.Items
+ .Add(dblGoku)
+ End With
+ Next dblGoku
+ 
+ For dblGoku As Double = 40 To 50 Step 0.5
+ With ComboBox4.Items
+ .Add(dblGoku)
+ End With
+ Next dblGoku
+ End Sub
+ 
+Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+ Dim dblLength As Integer = ComboBox1.SelectedItem
+ Dim dblWidth As Integer = ComboBox2.SelectedItem
+ Dim dblHeight As Integer = ComboBox3.SelectedItem
+ Dim dblCoverage As Double = ComboBox4.SelectedItem
+ TextBox1.Text = calcRolls(dblLength, dblWidth, dblHeight, dblCoverage)
+ 
+ End Sub
+ 
+Private Function calcRolls(dblLength As Integer, dblWidth As Integer, dblHeigth As Integer, dblRollCoverage 
+As Double)
+
+' formula of TSA = (l * h * 2 + w * h * 2 ) / cov (1 = length, w = width, h = height cov = roll coverage )
+ Dim dblTSA As Integer = Math.Ceiling((dblLength * dblHeight * 2 + dblWidth * dblHeigth * 2) / 
+dblRollCoverage)
+ Return dblTSA
+ 
+ End Function
+ 
+End Class
